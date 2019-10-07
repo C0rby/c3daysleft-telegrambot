@@ -13,8 +13,7 @@ import (
 
 func daysTilCongress() int {
 	now := time.Now()
-	year, _, _ := now.Date()
-	day1 := time.Date(year, time.December, 27, 0, 0, 0, 0, time.UTC)
+	day1 := time.Date(now.Year(), time.December, 27, 0, 0, 0, 0, time.UTC)
 	// calculate total number of days
 	duration := day1.Sub(now)
 	return int(math.Ceil(duration.Hours() / 24))
