@@ -4,19 +4,30 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"math"
 	"os"
 	"time"
 
 	tb "gopkg.in/tucnak/telebot.v2"
 )
 
+func daysBetween(a, b time.Time) int {
+	if a.After(b) {
+		a, b = b, a
+	}
+
+	days := -a.YearDay()
+	for year := a.Year(); year < b.Year(); year++ {
+		days += time.Date(year, time.December, 31, 0, 0, 0, 0, time.UTC).YearDay()
+	}
+	days += b.YearDay()
+
+	return days
+}
+
 func daysTilCongress() int {
 	now := time.Now()
 	day1 := time.Date(now.Year(), time.December, 27, 0, 0, 0, 0, time.UTC)
-	// calculate total number of days
-	duration := day1.Sub(now)
-	return int(math.Ceil(duration.Hours() / 24))
+	return daysBetween(now, day1)
 }
 
 func main() {
