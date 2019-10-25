@@ -4,11 +4,14 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"math/rand"
 	"os"
 	"time"
 
 	tb "gopkg.in/tucnak/telebot.v2"
 )
+
+var formats []string = []string{"%d", "%#x", "%o", "%b"}
 
 func daysBetween(a, b time.Time) int {
 	if a.After(b) {
@@ -55,7 +58,10 @@ func main() {
 
 	b.Handle("/days", func(m *tb.Message) {
 		days := daysTilCongress()
-		b.Send(m.Chat, fmt.Sprintf("There are %d days remaining until CCCongress", days))
+		s := rand.NewSource(time.Now().UnixNano())
+		r := rand.New(s)
+		format := formats[r.Intn(len(formats))]
+		b.Send(m.Chat, fmt.Sprintf("There are "+format+" days remaining until CCCongress", days))
 	})
 
 	b.Start()
