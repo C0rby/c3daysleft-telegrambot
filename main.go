@@ -11,7 +11,7 @@ import (
 	tb "gopkg.in/tucnak/telebot.v2"
 )
 
-var formats []string = []string{"%d", "%#x", "%o", "%b"}
+var formats []string = []string{"%d", "%#x", "%#o", "%b"}
 
 func daysBetween(a, b time.Time) int {
 	if a.After(b) {
