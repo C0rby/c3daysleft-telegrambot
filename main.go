@@ -12,6 +12,13 @@ import (
 )
 
 var formats []string = []string{"%d", "%#x", "%#o", "%b"}
+var daysMessages []string = []string{
+	"There are %s days remaining until CCCongress",
+	"You have to sleep %s times until CCCongress",
+	"Only %s nights left to hack something great for CCCongress",
+	"In %s days you will drink more Mate than on all other days of the year. Cheers!",
+	"You have %s nights to sleep well to be fit for the CCCongress",
+	"In %s you'll have a good excuse for leaving christmas with your family!"}
 
 func daysBetween(a, b time.Time) int {
 	if a.After(b) {
@@ -60,8 +67,12 @@ func main() {
 		days := daysTilCongress()
 		s := rand.NewSource(time.Now().UnixNano())
 		r := rand.New(s)
+
 		format := formats[r.Intn(len(formats))]
-		b.Send(m.Chat, fmt.Sprintf("There are "+format+" days remaining until CCCongress", days))
+		formattedDays := fmt.Sprintf(format, days)
+
+		message := daysMessages[r.Intn(len(daysMessages))]
+		b.Send(m.Chat, fmt.Sprintf(message, formattedDays))
 	})
 
 	b.Start()
