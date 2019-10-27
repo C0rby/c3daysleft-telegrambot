@@ -36,7 +36,14 @@ func daysBetween(a, b time.Time) int {
 
 func daysTilCongress() int {
 	now := time.Now()
+	return daysTilCongressFrom(now)
+}
+
+func daysTilCongressFrom(now time.Time) int {
 	day1 := time.Date(now.Year(), time.December, 27, 0, 0, 0, 0, time.UTC)
+	if now.After(day1) {
+		day1 = time.Date(now.Year()+1, time.December, 27, 0, 0, 0, 0, time.UTC)
+	}
 	return daysBetween(now, day1)
 }
 
