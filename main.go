@@ -64,5 +64,13 @@ func main() {
 		b.Send(m.Chat, fmt.Sprintf("There are "+format+" days remaining until CCCongress", days))
 	})
 
+	b.Handle("/nights", func(m *tb.Message) {
+		days := daysTilCongress() - 1
+		s := rand.NewSource(time.Now().UnixNano())
+		r := rand.New(s)
+		format := formats[r.Intn(len(formats))]
+		b.Send(m.Chat, fmt.Sprintf("You have to sleep "+format+" times until CCCongress", days))
+	})
+
 	b.Start()
 }
