@@ -19,6 +19,9 @@ var daysMessages []string = []string{
 	"In %s days you will drink more Mate than on all other days of the year. Cheers!",
 	"You have %s nights to sleep well to be fit for the CCCongress",
 	"In %s you'll have a good excuse for leaving christmas with your family!"}
+var secondsMessages []string = []string{
+	"There are %s seconds remaining until CCCongress",
+	"Just count to %s and the CCCongress will start!"}
 
 func daysBetween(a, b time.Time) int {
 	if a.After(b) {
@@ -38,6 +41,12 @@ func daysTilCongress() int {
 	now := time.Now()
 	day1 := time.Date(now.Year(), time.December, 27, 0, 0, 0, 0, time.UTC)
 	return daysBetween(now, day1)
+}
+
+func secondsTilCongress() int64 {
+	now := time.Now()
+	startDay1 := time.Date(now.Year(), time.December, 27, 10, 0, 0, 0, time.UTC)
+	return startDay1.Unix() - now.Unix()
 }
 
 func main() {
@@ -73,6 +82,18 @@ func main() {
 
 		message := daysMessages[r.Intn(len(daysMessages))]
 		b.Send(m.Chat, fmt.Sprintf(message, formattedDays))
+	})
+
+	b.Handle("/seconds", func(m *tb.Message) {
+		seconds := secondsTilCongress()
+		s := rand.NewSource(time.Now().UnixNano())
+		r := rand.New(s)
+
+		format := formats[r.Intn(len(formats))]
+		formattedSeconds := fmt.Sprintf(format, seconds)
+
+		message := secondsMessages[r.Intn(len(secondsMessages))]
+		b.Send(m.Chat, fmt.Sprintf(message, formattedSeconds))
 	})
 
 	b.Start()
