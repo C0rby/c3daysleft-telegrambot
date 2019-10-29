@@ -79,10 +79,11 @@ func main() {
 		return
 	}
 
+	s := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(s)
+
 	b.Handle("/days", func(m *tb.Message) {
 		days := daysTilCongress()
-		s := rand.NewSource(time.Now().UnixNano())
-		r := rand.New(s)
 
 		format := formats[r.Intn(len(formats))]
 		formattedDays := fmt.Sprintf(format, days)
@@ -93,8 +94,6 @@ func main() {
 
 	b.Handle("/seconds", func(m *tb.Message) {
 		seconds := secondsTilCongress()
-		s := rand.NewSource(time.Now().UnixNano())
-		r := rand.New(s)
 
 		format := formats[r.Intn(len(formats))]
 		formattedSeconds := fmt.Sprintf(format, seconds)
