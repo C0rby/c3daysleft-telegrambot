@@ -11,15 +11,15 @@ import (
 	tb "gopkg.in/tucnak/telebot.v2"
 )
 
-var formats []string = []string{"%d", "%#x", "%#o", "%b"}
-var daysMessages []string = []string{
+var formats = [...]string{"%d", "%#x", "%#o", "%b"}
+var daysMessages = [...]string{
 	"There are %s days remaining until CCCongress",
 	"You have to sleep %s times until CCCongress",
 	"Only %s nights left to hack something great for CCCongress",
 	"In %s days you will drink more Mate than on all other days of the year. Cheers!",
 	"You have %s nights to sleep well to be fit for the CCCongress",
 	"In %s days you'll have a good excuse for leaving christmas with your family!"}
-var secondsMessages []string = []string{
+var secondsMessages = [...]string{
 	"There are %s seconds remaining until CCCongress",
 	"Just count to %s and the CCCongress will start!"}
 
