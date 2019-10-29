@@ -5,6 +5,7 @@
 *.so
 *.dylib
 c3daysleft-telegrambot
+*.swp
 
 # Test binary, build with `go test -c`
 *.test
