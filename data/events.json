@@ -1,0 +1,32 @@
+[
+    {
+	"name":"Datenspuren",
+	"website": "https://www.datenspuren.de",
+	"begin": "2021-09-16T00:00:00+01:00",
+	"end": "2021-09-18T00:00:00+01:00"
+    },
+    {
+	"name":"37c3",
+	"website":"https://events.ccc.de/congress/",
+	"begin":"2021-12-27T00:00:00+01:00",
+	"end":"2021-12-30T00:00:00+01:00"
+    },
+    {
+	"name":"MRMCD",
+	"website":"https://mrmcd.net",
+	"begin":"2021-09-03T00:00:00+01:00",
+	"end":"2021-09-05T00:00:00+01:00"
+    },
+    {
+	"name":"MCH2021",
+	"website":"https://mch2021.org/",
+	"begin":"2021-08-06T00:00:00+01:00",
+	"end":"2021-08-10T00:00:00+01:00"
+    },
+    {
+	"name":"GPN21",
+	"website":"https://entropia.de/Gulaschprogrammiernacht",
+	"begin":"2021-05-13T00:00:00+01:00",
+	"end":"2021-05-16T00:00:00+01:00"
+    }
+]
