@@ -13,18 +13,6 @@ import (
 	"github.com/c0rby/c3daysleft-telegrambot/pkg/telegram/command"
 )
 
-var formats = [...]string{"%d", "%#x", "%#o", "%#b"}
-var daysMessages = [...]string{
-	"There are %s days remaining until CCCongress",
-	"You have to sleep %s times until CCCongress",
-	"Only %s nights left to hack something great for CCCongress",
-	"In %s days you will drink more Mate than on all other days of the year. Cheers!",
-	"You have %s nights to sleep well to be fit for the CCCongress",
-	"In %s days you'll have a good excuse for leaving christmas with your family!"}
-var secondsMessages = [...]string{
-	"There are %s seconds remaining until CCCongress",
-	"Just count to %s and the CCCongress will start!"}
-
 func main() {
 	var (
 		apiToken   = flag.String("apitoken", "", "Telegram API Token")
@@ -55,7 +43,6 @@ func main() {
 		telegram.Commands(
 			command.NewEvents(events),
 			command.NewDays(events),
-			command.NewSeconds(events),
 			command.NewSeconds(events),
 		),
 	)

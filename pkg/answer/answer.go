@@ -16,7 +16,7 @@ const (
 	Seconds = "seconds"
 )
 
-var _formats = [...]string{"%d", "%#x (%d)", "%#o (%d)", "%#b (%d)"}
+var _formats = [...]string{"%#x (%d)", "%#o (%d)", "%#b (%d)"}
 
 var _genericAnswers = [...]string{
 	"There are {value} {unit} remaining until {event}.",
